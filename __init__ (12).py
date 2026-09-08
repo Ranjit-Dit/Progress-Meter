@@ -1,1 +1,0 @@
-from .eligibility import check

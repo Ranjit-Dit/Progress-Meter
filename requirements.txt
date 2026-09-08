@@ -1,7 +1,0 @@
-fastapi>=0.110
-uvicorn[standard]>=0.29
-rapidfuzz>=3.6
-pytest>=8.0
-httpx>=0.27
-# OPTIONAL - semantic fallback only (heavy, install only if you want embedding matching):
-# sentence-transformers>=2.7
