@@ -1,0 +1,25 @@
+{
+  "gaps": [
+    {"skill_id": "sk_ci_cd", "weight": 1.0},
+    {"skill_id": "sk_docker", "weight": 1.0},
+    {"skill_id": "sk_kubernetes", "weight": 1.0},
+    {"skill_id": "sk_aws", "weight": 1.0},
+    {"skill_id": "sk_terraform", "weight": 0.5}
+  ],
+  "types": ["course", "project", "internship", "assessment"],
+  "limit": 2,
+  "opportunities": [
+    {
+      "opportunity_id": 1,
+      "title": "DevOps Intern",
+      "required_skills": [
+        {"skill_id": "sk_linux", "weight": 1.0, "min_proficiency": 0.5},
+        {"skill_id": "sk_docker", "weight": 1.0, "min_proficiency": 0.5},
+        {"skill_id": "sk_ci_cd", "weight": 1.0, "min_proficiency": 0.5},
+        {"skill_id": "sk_kubernetes", "weight": 1.0, "min_proficiency": 0.5},
+        {"skill_id": "sk_aws", "weight": 1.0, "min_proficiency": 0.5},
+        {"skill_id": "sk_terraform", "weight": 0.5, "min_proficiency": 0.3}
+      ]
+    }
+  ]
+}
