@@ -64,8 +64,28 @@ export class Student {
   @Column({ name: 'is_portfolio_public', default: false })
   isPortfolioPublic: boolean;
 
-  @Column({ name: 'portfolio_slug', length: 80, nullable: true, unique: true })
+  @Column({
+    name: 'portfolio_slug',
+    type: 'varchar',
+    length: 80,
+    nullable: true,
+    unique: true,
+  })
   portfolioSlug?: string | null;
+
+  @Column({ name: 'resume_path', type: 'text', nullable: true })
+  resumePath?: string | null;
+
+  @Column({
+    name: 'resume_original_name',
+    type: 'varchar',
+    length: 255,
+    nullable: true,
+  })
+  resumeOriginalName?: string | null;
+
+  @Column({ name: 'resume_uploaded_at', type: 'timestamptz', nullable: true })
+  resumeUploadedAt?: Date | null;
 
   @OneToMany(() => StudentSkill, (studentSkill) => studentSkill.student)
   skills: StudentSkill[];

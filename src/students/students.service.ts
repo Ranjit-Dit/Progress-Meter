@@ -140,6 +140,23 @@ export class StudentsService {
     }
   }
 
+  async saveResume(user: AuthenticatedUser, file: Express.Multer.File) {
+    const student = await this.getStudentOrThrow(user.id);
+    student.resumePath = file.path;
+    student.resumeOriginalName = file.originalname;
+    student.resumeUploadedAt = new Date();
+    await this.studentsRepository.save(student);
+    return this.resumeMetadata(student);
+  }
+
+  async getResume(user: AuthenticatedUser) {
+    const student = await this.getStudentOrThrow(user.id);
+    if (!student.resumePath || !student.resumeOriginalName) {
+      throw new NotFoundException('No resume has been uploaded.');
+    }
+    return this.resumeMetadata(student);
+  }
+
   private findByUserId(userId: string) {
     return this.studentsRepository.findOne({
       where: { user: { id: userId } },
@@ -212,6 +229,14 @@ export class StudentsService {
           name: studentSkill.skill.category.name,
         },
       },
+    };
+  }
+
+  private resumeMetadata(student: Student) {
+    return {
+      fileName: student.resumeOriginalName,
+      uploadedAt: student.resumeUploadedAt,
+      available: Boolean(student.resumePath),
     };
   }
 }

@@ -18,6 +18,8 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { AuditModule } from './audit/audit.module';
 import { InstitutionsModule } from './institutions/institutions.module';
+import { AcademiciansModule } from './academicians/academicians.module';
+import { InterviewsModule } from './interviews/interviews.module';
 import { Application } from './database/entities/application.entity';
 import { AssessmentAnswer } from './database/entities/assessment-answer.entity';
 import { AssessmentAttempt } from './database/entities/assessment-attempt.entity';
@@ -39,6 +41,8 @@ import { Notification } from './database/entities/notification.entity';
 import { AuditLog } from './database/entities/audit-log.entity';
 import { Institution } from './database/entities/institution.entity';
 import { InstitutionAdmin } from './database/entities/institution-admin.entity';
+import { Academician } from './database/entities/academician.entity';
+import { Interview } from './database/entities/interview.entity';
 import { User } from './database/entities/user.entity';
 
 @Module({
@@ -79,6 +83,8 @@ import { User } from './database/entities/user.entity';
           AuditLog,
           Institution,
           InstitutionAdmin,
+          Academician,
+          Interview,
         ],
         synchronize:
           configService.get<string>('DB_SYNCHRONIZE', 'false') === 'true',
@@ -97,6 +103,8 @@ import { User } from './database/entities/user.entity';
     AnalyticsModule,
     AuditModule,
     InstitutionsModule,
+    AcademiciansModule,
+    InterviewsModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],

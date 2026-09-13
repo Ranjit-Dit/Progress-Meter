@@ -14,6 +14,7 @@ import { AuthenticatedUser, JwtPayload } from './auth.types';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
+import { CreatePrivilegedUserDto } from './dto/create-privileged-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -98,6 +99,29 @@ export class AuthService {
   async logout(user: AuthenticatedUser) {
     await this.usersRepository.update(user.id, { refreshTokenHash: null });
     return { success: true };
+  }
+
+  async createPrivilegedUser(dto: CreatePrivilegedUserDto) {
+    const email = dto.email.trim().toLowerCase();
+    const existingUser = await this.usersRepository.findOne({
+      where: { email },
+    });
+
+    if (existingUser) {
+      throw new ConflictException(
+        'An account already exists for this email address.',
+      );
+    }
+
+    const user = await this.usersRepository.save(
+      this.usersRepository.create({
+        email,
+        passwordHash: await bcrypt.hash(dto.password, 12),
+        role: dto.role,
+      }),
+    );
+
+    return { user: this.toAuthenticatedUser(user) };
   }
 
   private async createAuthResponse(user: User) {

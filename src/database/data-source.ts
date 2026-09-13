@@ -21,6 +21,8 @@ import { Notification } from './entities/notification.entity';
 import { AuditLog } from './entities/audit-log.entity';
 import { Institution } from './entities/institution.entity';
 import { InstitutionAdmin } from './entities/institution-admin.entity';
+import { Academician } from './entities/academician.entity';
+import { Interview } from './entities/interview.entity';
 import { User } from './entities/user.entity';
 
 export default new DataSource({
@@ -53,6 +55,8 @@ export default new DataSource({
     AuditLog,
     Institution,
     InstitutionAdmin,
+    Academician,
+    Interview,
   ],
   migrations: [`${__dirname}/migrations/*{.ts,.js}`],
   synchronize: false,

@@ -5,8 +5,12 @@ import { CurrentUser } from './current-user.decorator';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
+import { CreatePrivilegedUserDto } from './dto/create-privileged-user.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { Throttle } from '@nestjs/throttler';
+import { Roles } from './roles.decorator';
+import { RolesGuard } from './roles.guard';
+import { UserRole } from '../database/entities/enums';
 
 @Controller('auth')
 export class AuthController {
@@ -40,5 +44,12 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   me(@CurrentUser() user: AuthenticatedUser) {
     return user;
+  }
+
+  @Post('admin/users')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN)
+  createPrivilegedUser(@Body() dto: CreatePrivilegedUserDto) {
+    return this.authService.createPrivilegedUser(dto);
   }
 }
