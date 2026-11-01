@@ -1,0 +1,28 @@
+PODS:
+  - file_selector_macos (0.0.1):
+    - FlutterMacOS
+  - FlutterMacOS (1.0.0)
+  - url_launcher_macos (0.0.1):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - file_selector_macos (from `Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
+
+EXTERNAL SOURCES:
+  file_selector_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  url_launcher_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
+
+SPEC CHECKSUMS:
+  file_selector_macos: 3af0fddc391c32a6a3956a7d3898ca3a86057a4f
+  FlutterMacOS: c232990155153907050900a2e175c7773903ba4e
+  url_launcher_macos: f87a979182d112f911de6820aefddaf56ee9fbfd
+
+PODFILE CHECKSUM: 1e95c36afbfd1cb6423ceca4de7a8e1b256fb6ac
+
+COCOAPODS: 1.16.2

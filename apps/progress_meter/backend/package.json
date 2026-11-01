@@ -1,0 +1,15 @@
+{
+  "name": "progress-meter-coach",
+  "version": "1.8.0",
+  "private": true,
+  "type": "module",
+  "description": "AI coaching, Testing Lab, and benchmark research gateway for Progress Meter",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "demo": "COACH_MODE=demo node server.mjs",
+    "test": "node --test"
+  }
+}
