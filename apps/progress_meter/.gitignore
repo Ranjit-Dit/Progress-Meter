@@ -33,6 +33,8 @@ migrate_working_dir/
 /build/
 **/build/
 /coverage/
+native/*.o
+native/test_progress_meter
 
 # Symbolication related
 app.*.symbols

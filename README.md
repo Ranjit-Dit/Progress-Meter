@@ -16,6 +16,8 @@ flutter run -d macos
 
 For iPhone setup, feature details, and current platform limits, see the [app README](apps/progress_meter/README.md). Android runner files are included; Android device behavior has not been verified.
 
+The app also includes a small standalone C helper under [`apps/progress_meter/native/`](apps/progress_meter/native/). It calculates deterministic benchmark roadmap readiness from milestone completion fractions and has a C ABI suitable for future Dart FFI integration. It does not judge the four AI-only progress dimensions. Run `make test` in that directory to verify it.
+
 ## Configure AI
 
 In the app, open **Settings → Your AI model → Connect my AI** and select your provider, model ID, and API key. Personal keys stay in memory for the current app session and are excluded from saved data and backups.
